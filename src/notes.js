@@ -1,3 +1,3 @@
 function Notes() {
-  this.list = []
+  this.list = ['test', 'beginning', 'something']
 }
