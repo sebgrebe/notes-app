@@ -2,8 +2,16 @@
 var notes = new Notes()
 
 
-console.log(testVarExist(notes.what))
+testVarExist(notes.list)
 
-notes.list.push('hello')
+//
+notes.list.push('hello my nameer asdf')
 
-console.log(testArrayInclude(notes.list, 'hello'))
+testArrayInclude(notes.list, 'hello my nameer asdf')
+notes.list.push('hello my nameer asdfs')
+
+notes.add("Whoop!")
+testArrayInclude(notes.list, 'Whoop!')
+
+testTagLength( notes.list[0])
+testTagLength( notes.list[1])
