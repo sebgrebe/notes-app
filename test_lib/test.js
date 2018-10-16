@@ -18,10 +18,20 @@ function testArrayInclude( array, element ) {
   }
 }
 
-function testTagLength( string ) {
+function testTagLength(string) {
   if ( string.length <= 20 ) {
     test_div.innerHTML += "Tag length: TEST PASSED <br>"
   } else {
     test_div.innerHTML += "Max length exceeded"
   }
 }
+
+function testShowNoteFromIndex(array,index) {
+  if(array[index]){
+    test_div.innerHTML += "Tag length: TEST PASSED <br>"
+  } else {
+    test_div.innerHTML += "Max length exceeded"
+  }
+}
+
+
