@@ -4,7 +4,7 @@ function renderList(){
     list_div.innerHTML = "";
     var list = notes.list
     for(let i=0; i<list.length; i++){
-        list_div.innerHTML += "<li><a onclick='clickLink(" + i + ")' href='#note"+i+"'>" + notes.list[i] + "</a></li>";
+        list_div.innerHTML += "<li><a onclick='clickLink(" + i + ")' href='#note"+i+"'>" + notes.cutToTwenty(list[i]) + "</a></li>";
     }
 }
 
