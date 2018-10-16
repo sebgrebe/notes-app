@@ -1,10 +1,10 @@
-var note = new Notes();
+var notes = new Notes();
 function renderList(){
     var list_div = document.getElementById('list')
     list_div.innerHTML = "";
-    var list = note.list
+    var list = notes.list
     for(let i=0; i<list.length; i++){
-        list_div.innerHTML += "<li><a href='#note"+i+"'>" + list[i] + "</a></li>";
+        list_div.innerHTML += "<li><a onclick='clickLink(" + i + ")' href='#note"+i+"'>" + notes.list[i] + "</a></li>";
     }
 }
 
@@ -13,6 +13,7 @@ function hideHome() {
 }
 
 function showHome() {
+  renderList();
   document.getElementById('home').style.display = "block";
 }
 
@@ -21,15 +22,34 @@ function clickButton() {
 }
 
 function createNote(input) {
-  note.add(input);
+  notes.add(input);
   renderList();
 }
 
-function showNote(id) {
-  var note_div = document.getElementById()
+function clickLink(id) {
+  console.log(id)
+  hideHome()
+  renderNote(id)
+  showNotePage()
 }
 
+function renderNote(id) {
+  var note_div = document.getElementById('note')
+  var note = notes.list[id]
+  note_div.innerHTML = note
+}
 
-renderList();
-// hideHome()
+function showNotePage() {
+  document.getElementById('note_page').style.display = "block";
+}
+
+function goBack() {
+  hideNotePage()
+  showHome()
+}
+
+function hideNotePage() {
+  document.getElementById('note_page').style.display = "none";
+}
+
 showHome()
