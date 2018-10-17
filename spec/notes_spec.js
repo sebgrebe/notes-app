@@ -1,16 +1,16 @@
+var notes = new Notes();
 
-var notes = new Notes()
+console.log('exist: ' + expect(notes.list).toExist());
 
 
-testVarExist(notes.list)
+notes.add('hello my nameer asdf');
 
-//
-notes.list.push('hello my nameer asdf')
+console.log(
+  'includes: ' + expect(notes.list).toInclude('hello my nameer asdf')
+);
 
-testArrayInclude(notes.list, 'hello my nameer asdf')
-notes.list.push('hello my nameer asdfs')
+notes.list.push('hello my nameer asdffgasgadfses');
 
-notes.add("Whoop!")
-testArrayInclude(notes.list, 'Whoop!')
-
-testTagLength(cutToTwenty(notes.list[4]))
+console.log(
+  'Twenty: ' + expect(notes.cutToTwenty(notes.list[4]).length).toBeLessThan(21)
+);
