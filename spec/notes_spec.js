@@ -3,11 +3,19 @@ var notes = new Notes();
 console.log('Exists: ' + expect(notes.list).toExist());
 
 // Working
-it('should have a list', () => expect(notes.list).toExist());
+it('should have a list', () =>
+  expect(notes.list).toExist()
+);
+
+// Also working
+it('should have a list', () => (
+  notes.add('hfdsjkfshj'),
+  expect(notes.list).toExist()
+));
 
 // Failing
-it('should have a list', function () {
-  expect(notes.list).toExist()
+it('should have a list', function() {
+  expect(notes.list).toExist();
 });
 
 // it('should include the string', () =>
