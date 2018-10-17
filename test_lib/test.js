@@ -1,39 +1,34 @@
 var test_div = document.getElementById('test');
 
-function expect(a) {
-  var toEqual = function(b) {
+const expect = (a) => ({
+  toEqual: (b) => {
     return a === b;
-  };
+  },
 
-  var toExist = () => {
+  toExist: () => {
     return a !== undefined;
-  };
+  },
 
-  var toInclude = function(b) {
+  toInclude: (b) => {
     return a.includes(b);
-  };
+  },
 
-  var toBeLessThan = function(b) {
+  toBeLessThan: (b) => {
     return a < b;
-  };
+  }
+});
 
-  return {
-    toEqual: toEqual,
-    toExist: toExist,
-    toInclude: toInclude,
-    toBeLessThan: toBeLessThan
-  };
-}
-
-function it(string, test) {
+const it = (string, test) => {
   var test_div = document.getElementById('test');
+
   test_div.innerHTML += string + ': Test ';
 
   // if (test()) {
-  //   test_div.innerHTML += 'Test passing';
+  //   test_div.innerHTML += 'passing';
   // } else {
-  //   test_div.innerHTML += 'Test failing';
+  //   test_div.innerHTML += 'failing';
   // }
 
-  test_div.innerHTML += (test() ? 'passing': 'failing')
+  // This is equal to the above
+  test_div.innerHTML += (test()) ? 'passing': 'failing'
 }
