@@ -4,8 +4,16 @@ function renderList(){
     list_div.innerHTML = "";
     var list = notes.list
     for(let i=0; i<list.length; i++){
-        list_div.innerHTML += "<li><a onclick='clickLink(" + i + ")' href='#note"+i+"'>" + notes.cutToTwenty(list[i]) + "</a></li>";
+      // onclick='clickLink(" + i + ")'
+        list_div.innerHTML += "<li><a href='#note"+i+"'>" + notes.cutToTwenty(list[i]) + "</a></li>";
     }
+}
+
+showCurrentPage();
+makeUrlChangeNote();
+
+function makeUrlChangeNote(){
+  window.addEventListener("hashchange", showCurrentPage);
 }
 
 function hideHome() {
@@ -27,7 +35,6 @@ function createNote(input) {
 }
 
 function clickLink(id) {
-  console.log(id)
   hideHome()
   renderNote(id)
   showNotePage()
@@ -52,4 +59,15 @@ function hideNotePage() {
   document.getElementById('note_page').style.display = "none";
 }
 
-showHome()
+function showCurrentPage(){
+if (window.location.hash === ""){
+  showHome()
+  hideNotePage()
+} else {
+  noteId =  window.location.hash.split("#note").join("");
+  console.log(noteId)
+  hideHome()
+  renderNote(noteId)
+  showNotePage()
+}
+};
