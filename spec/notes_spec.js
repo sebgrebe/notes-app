@@ -1,25 +1,20 @@
 var notes = new Notes();
 
-console.log('Exists: ' + expect(notes.list).toExist());
+describe(".list", function() {
+  it('should have a list', function() {
+    return expect(notes.list).toExist()
+  });
+})
 
-it('should have a list', function () {
-  expect(notes.patrick).toExist();
-});
+describe(".add", function() {
+  it('adds a note to the list', function() {
+    notes.add("Hi")
+    return expect(notes.list).toInclude("Hi")
+  });
+})
 
-notes.add('hello my nameer asdf');
-
-console.log(
-  'Includes: ' + expect(notes.list).toInclude('hello my nameer asdf')
-);
-
-notes.list.push('This string is a lot longer than twenty characters');
-
-console.log(
-  'Exactly Twenty: ' +
-    expect(notes.cutToTwenty(notes.list[4]).length).toEqual(20)
-);
-
-console.log(
-  'Less Than Twenty: ' +
-    expect(notes.cutToTwenty(notes.list[4]).length).toBeLessThan(21)
-);
+describe(".cutToTwenty", function() {
+  it('cuts note to twenty', function() {
+    return expect(notes.cutToTwenty("This is a very long note, longer than 20 character").length).toBeLessThan(21)
+  });  
+})

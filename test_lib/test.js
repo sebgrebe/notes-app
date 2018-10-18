@@ -1,39 +1,31 @@
 var test_div = document.getElementById('test');
 
-function expect(a) {
-  var toEqual = function(b) {
+const expect = (a) => ({
+  toEqual: (b) => {
     return a === b;
-  };
+  },
 
-  var toExist = () => {
+  toExist: () => {
     return a !== undefined;
-  };
+  },
 
-  var toInclude = function(b) {
+  toInclude: (b) => {
     return a.includes(b);
-  };
+  },
 
-  var toBeLessThan = function(b) {
+  toBeLessThan: (b) => {
     return a < b;
-  };
+  },
+})
 
-  return {
-    toEqual: toEqual,
-    toExist: toExist,
-    toInclude: toInclude,
-    toBeLessThan: toBeLessThan
-  };
+const it = (string, test) => {
+  var test_div = document.getElementById('test');
+  console.log(test())
+  test_div.innerHTML += '<div style="display: block">' + string + '</div>';
+  test_div.innerHTML += (test() ? '<div style="display: block">Test passing</div>': '<div style="display: block">Test failing</div>')
 }
 
-function it(string, test) {
-  var test_div = document.getElementById('test');
-  test_div.innerHTML += string + ': Test ';
-
-  // if (test()) {
-  //   test_div.innerHTML += 'Test passing';
-  // } else {
-  //   test_div.innerHTML += 'Test failing';
-  // }
-
-  test_div.innerHTML += (test() ? 'passing': 'failing')
+const describe = (string, block) => {
+  test_div.innerHTML += '<div style="display: block; font-weight: bold">' + string + '</div>';
+  block()
 }
