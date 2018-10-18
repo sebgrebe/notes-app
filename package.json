@@ -1,0 +1,23 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "a notes app",
+  "main": "server.js",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebgrebe/notes-app.git"
+  },
+  "author": "alex, nazz, patrick, vic, seb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebgrebe/notes-app/issues"
+  },
+  "homepage": "https://github.com/sebgrebe/notes-app#readme"
+}
