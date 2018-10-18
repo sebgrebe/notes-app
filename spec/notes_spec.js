@@ -1,16 +1,20 @@
+var notes = new Notes();
 
-var notes = new Notes()
+describe(".list", function() {
+  it('should have a list', function() {
+    return expect(notes.list).toExist()
+  });
+})
 
+describe(".add", function() {
+  it('adds a note to the list', function() {
+    notes.add("Hi")
+    return expect(notes.list).toInclude("Hi")
+  });
+})
 
-testVarExist(notes.list)
-
-//
-notes.list.push('hello my nameer asdf')
-
-testArrayInclude(notes.list, 'hello my nameer asdf')
-notes.list.push('hello my nameer asdfs')
-
-notes.add("Whoop!")
-testArrayInclude(notes.list, 'Whoop!')
-
-testTagLength(cutToTwenty(notes.list[4]))
+describe(".cutToTwenty", function() {
+  it('cuts note to twenty', function() {
+    return expect(notes.cutToTwenty("This is a very long note, longer than 20 character").length).toBeLessThan(21)
+  });  
+})

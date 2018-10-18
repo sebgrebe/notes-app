@@ -1,37 +1,31 @@
-var test_div = document.getElementById('test')
-console.log(test_div)
+var test_div = document.getElementById('test');
 
+const expect = (a) => ({
+  toEqual: (b) => {
+    return a === b;
+  },
 
-function testVarExist( call ) {
-  if (call === undefined) {
-    test_div.innerHTML += "Variable does not exist <br>";
-  } else {
-    test_div.innerHTML += "Variable exists: TEST PASSED <br>"
-  }
+  toExist: () => {
+    return a !== undefined;
+  },
+
+  toInclude: (b) => {
+    return a.includes(b);
+  },
+
+  toBeLessThan: (b) => {
+    return a < b;
+  },
+})
+
+const it = (string, test) => {
+  var test_div = document.getElementById('test');
+  console.log(test())
+  test_div.innerHTML += '<div style="display: block">' + string + '</div>';
+  test_div.innerHTML += (test() ? '<div style="display: block">Test passing</div>': '<div style="display: block">Test failing</div>')
 }
 
-function testArrayInclude( array, element ) {
-  if (array.includes(element)) {
-    test_div.innerHTML += "Array includes: TEST PASSED <br>"
-  } else {
-    test_div.innerHTML += "Element is not in array <br>";
-  }
+const describe = (string, block) => {
+  test_div.innerHTML += '<div style="display: block; font-weight: bold">' + string + '</div>';
+  block()
 }
-
-function testTagLength(string) {
-  if ( string.length <= 20 ) {
-    test_div.innerHTML += "Tag length: TEST PASSED <br>"
-  } else {
-    test_div.innerHTML += "Max length exceeded"
-  }
-}
-
-function testShowNoteFromIndex(array,index) {
-  if(array[index]){
-    test_div.innerHTML += "Tag length: TEST PASSED <br>"
-  } else {
-    test_div.innerHTML += "Max length exceeded"
-  }
-}
-
-
